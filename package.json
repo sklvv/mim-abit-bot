@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "mim-abit-bot",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "testg": "nodemon src/helpers/getAvaliableStudy.js "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-vk-bot-api": "^3.5.0",
+    "vk-io": "^4.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

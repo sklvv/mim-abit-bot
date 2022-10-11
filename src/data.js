@@ -43,6 +43,7 @@ export const examSubjects = [
 export const areasOfStudy = [
   {
     name: "Экономика",
+    infaKurs: "рассказ про экономику",
     cost: 136000,
     cost20: 108800,
     cost15: 115600,
@@ -55,10 +56,10 @@ export const areasOfStudy = [
       "Русский Язык",
       "Обществознание",
     ],
-    infoUrl:'penis)123'
   },
   {
     name: "Гос. и Муниципальное управление",
+    infaKurs: "рассказ про гму",
     cost: 136000,
     cost20: 108800,
     cost15: 115600,
@@ -74,6 +75,7 @@ export const areasOfStudy = [
   },
   {
     name: "Менеджмент",
+    infaKurs:"рассказ про менеджмент",
     cost: 136000,
     cost20: 108800,
     cost15: 115600,
@@ -90,6 +92,7 @@ export const areasOfStudy = [
 
   {
     name: "Социология",
+    infaKurs:"рассказ про социологию",
     cost: 136000,
     cost20: 108800,
     cost15: 115600,
@@ -105,6 +108,7 @@ export const areasOfStudy = [
   },
   {
     name: "Реклама и связи с общественностью",
+    infaKurs:"рассказ про рекламу и связи",
     cost: 136000,
     cost20: 108800,
     cost15: 115600,
@@ -120,6 +124,7 @@ export const areasOfStudy = [
   },
   {
     name: "Лингвистика",
+    infaKurs:"рассказ про лингвистику",
     cost: 136000,
     cost20: 108800,
     cost15: 115600,
@@ -135,6 +140,7 @@ export const areasOfStudy = [
   },
   {
     name: "Прикладная информатика ЦТМФ",
+    infaKurs:"рассказ про пиф",
     cost: 152000,
     cost20: 121600,
     cost15: 129200,
@@ -149,6 +155,7 @@ export const areasOfStudy = [
 
 
     name: "Прикладная информатика МТИД",
+    infaKurs:"рассказ про пиф мтид",
     cost: 152000,
     cost20: 121600,
     cost15: 129200,

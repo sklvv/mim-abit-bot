@@ -24,7 +24,7 @@ export const examSubjects = [
     minPoints: 44,
   },
   {
-    subject: "Иностранный язык",
+    subject: "Иностранный язк",
     minPoints: 30,
   },
   {
@@ -55,6 +55,7 @@ export const areasOfStudy = [
       "Русский Язык",
       "Обществознание",
     ],
+    infoUrl:'penis)'
   },
   {
     name: "Гос. и Муниципальное управление",

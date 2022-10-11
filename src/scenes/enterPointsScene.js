@@ -6,7 +6,13 @@ export const enterPointsScene = new VkBotScene(
   "enterPoints",
   async (ctx) => {
     ctx.scene.next();
-
+    await ctx.reply(
+      "Переходим к вводу баллов",
+      null,
+      VkBotMarkup.keyboard([
+        VkBotMarkup.button("В начало", "negative"),
+      ]).oneTime(true)
+    );
     await ctx.reply(
       `Ты выбрал ${ctx.session.subjectsArr.length} предмета. Начнем с ${ctx.session.subjectsArr[0]}:`
     );
@@ -58,7 +64,7 @@ export const enterPointsScene = new VkBotScene(
       points: ctx.message.text,
     });
 
-    ctx.scene.leave();
+    ctx.scene.next();
 
     await ctx.reply(
       "Давай посмотри куда ты сможешь поступить!",
@@ -68,5 +74,12 @@ export const enterPointsScene = new VkBotScene(
         VkBotMarkup.button("В начало", "negative"),
       ]).oneTime(true)
     );
+  },
+  async (ctx) => {
+    if (ctx.message.text === "Вперед!") {
+      ctx.scene.enter("checkFieldStudy");
+    } else if (ctx.message.text === "В начало") {
+      ctx.scene.enter("greet");
+    }
   }
 );

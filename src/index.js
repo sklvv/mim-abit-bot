@@ -7,6 +7,7 @@ import VkBotMarkup from "node-vk-bot-api/lib/markup.js";
 import { checkFieldStudyScene } from "./scenes/checkFieldStudyScene.js";
 import { enterPointsScene } from "./scenes/enterPointsScene.js";
 import { greetScene } from "./scenes/greetScene.js";
+import { getContractScene } from "./scenes/getContractScene.js";
 
 dotenv.config();
 
@@ -17,21 +18,14 @@ const session = new VkBotSession();
 const stage = new VkBotStage(
   greetScene,
   enterPointsScene,
-  checkFieldStudyScene
+  checkFieldStudyScene,
+  getContractScene
 );
 bot.use(session.middleware());
 bot.use(stage.middleware());
 
 bot.command(["Начать", "В начало"], async (ctx) => {
   await ctx.scene.enter("greet");
-});
-
-bot.command("Ввести баллы", async (ctx) => {
-  await ctx.scene.enter("enterPoints");
-});
-
-bot.command("Вперед!", async (ctx) => {
-  await ctx.scene.enter("checkFieldStudy");
 });
 
 bot.startPolling((err) => {

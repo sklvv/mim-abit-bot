@@ -4,9 +4,9 @@ import { examSubjects } from "../data.js";
 
 export const greetScene = new VkBotScene(
   "greet",
-  (ctx) => {
+  async (ctx) => {
     ctx.scene.next();
-    ctx.reply(
+    await ctx.reply(
       "Приветсвую тебя, уважаемый абитуриент! Хочешь узнать, проходишь ты на контрактное(платное) обучение?",
       null,
       VkBotMarkup.keyboard(
@@ -14,24 +14,24 @@ export const greetScene = new VkBotScene(
         { columns: 3 }
       ).inline()
     );
-    ctx.reply(
+    await ctx.reply(
       "Выбери предметы ЕГЭ или вступительные экзамены, которые ты сдавал"
     );
   },
-  (ctx) => {
+  async (ctx) => {
     ctx.session.subjectsArr = [ctx.message.text];
 
     ctx.scene.next();
   },
-  (ctx) => {
+  async (ctx) => {
     ctx.session.subjectsArr.push(ctx.message.text);
 
     ctx.scene.next();
   },
-  (ctx) => {
+  async (ctx) => {
     ctx.session.subjectsArr.push(ctx.message.text);
 
-    ctx.reply(
+    await ctx.reply(
       "Если это все, то нажми кнопку продолжить!",
       null,
       VkBotMarkup.keyboard([
@@ -40,21 +40,13 @@ export const greetScene = new VkBotScene(
     );
     ctx.scene.next();
   },
-  (ctx) => {
+  async (ctx) => {
     if (ctx.message.text !== "Продолжить") {
       ctx.session.subjectsArr.push(ctx.message.text);
 
-      ctx.scene.leave();
+      ctx.scene.enter("enterPoints");
     } else {
-      ctx.scene.leave();
+      ctx.scene.enter("enterPoints");
     }
-    ctx.reply(
-      "Переходим к вводу баллов",
-      null,
-      VkBotMarkup.keyboard([
-        VkBotMarkup.button("Ввести баллы", "primary"),
-        VkBotMarkup.button("В начало", "negative"),
-      ]).oneTime(true)
-    );
   }
 );

@@ -16,16 +16,6 @@ export const checkFieldStudyScene = new VkBotScene(
 
     if (avaliableStudy.length >= 1) {
       await ctx.reply(
-        `Тебе доступны следующие программы:`,
-        null,
-        VkBotMarkup.keyboard(
-          avaliableStudy.map((fieldStudy) => {
-            return fieldStudy.name;
-          }),
-          { columns: 3 }
-        ).inline()
-      );
-      await ctx.reply(
         "Вы проходите к нам на контрактную форму обучения! Нажмите на интересующее направление чтобы узнать о нем побольше!",
         null,
         VkBotMarkup.keyboard([
@@ -38,6 +28,16 @@ export const checkFieldStudyScene = new VkBotScene(
           ],
           [VkBotMarkup.button("В начало", "negative")],
         ])
+      );
+      await ctx.reply(
+        `Тебе доступны следующие программы:`,
+        null,
+        VkBotMarkup.keyboard(
+          avaliableStudy.map((fieldStudy) => {
+            return fieldStudy.name;
+          }),
+          { columns: 3 }
+        ).inline()
       );
     } else {
       await ctx.reply(
@@ -60,25 +60,7 @@ export const checkFieldStudyScene = new VkBotScene(
         break;
 
       case "Перейти к заполнению документов":
-        await ctx.reply("заполнить данные для заключения договора на обучение");
-        ctx.scene.next();
-        break;
-
-      default:
-        ctx.reply(`Рассказ про ${ctx.message.text}
-        <............>
-        Для вас стоимость обучения за 2023-2024 учебный год составит <....> рублей
-        `);
-        // TODO
-
-        break;
-    }
-  },
-  // fillingDocsProcess
-  async (ctx) => {
-    switch (ctx.message.text) {
-      case "В начало":
-        ctx.scene.leave();
+        await ctx.scene.enter("getContract");
         break;
 
       default:

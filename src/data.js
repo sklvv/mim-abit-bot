@@ -55,7 +55,7 @@ export const areasOfStudy = [
       "Русский Язык",
       "Обществознание",
     ],
-    infoUrl:'penis)'
+    infoUrl:'penis)123'
   },
   {
     name: "Гос. и Муниципальное управление",

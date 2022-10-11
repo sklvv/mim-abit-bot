@@ -35,7 +35,7 @@ export const enterPointsScene = new VkBotScene(
       subjectName: ctx.session.subjectsArr[2],
       points: ctx.message.text,
     });
-    console.log(ctx.session.pointsArr);
+
     if (ctx.session.subjectsArr.length === 3) {
       ctx.scene.leave();
 

@@ -57,6 +57,8 @@ export const checkFieldStudyScene = new VkBotScene(
       case "Контакты и график приемной комиссии":
         await ctx.reply("инфа о приемной комиссии");
         // TODO
+        // tema pishi tut
+
         break;
 
       case "Перейти к заполнению документов":

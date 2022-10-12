@@ -30,7 +30,7 @@ export const checkFieldStudyScene = new VkBotScene(
         ])
       );
       await ctx.reply(
-        `Тебе доступны следующие программы:`,
+        `Тебе доступны следующие направления:`,
         null,
         VkBotMarkup.keyboard(
           avaliableStudy.map((fieldStudy) => {
@@ -41,7 +41,7 @@ export const checkFieldStudyScene = new VkBotScene(
       );
     } else {
       await ctx.reply(
-        "К сожалению тебе не доступные наши программы!",
+        "К сожалению набранные баллы ниже порога прохождения на наши направления.",
         null,
         VkBotMarkup.keyboard([
           VkBotMarkup.button("В начало", "negative"),

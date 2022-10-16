@@ -1,4 +1,5 @@
 import { examSubjects } from "../data.js";
+
 export const checkForPassedExam = (arrayPointsAndSubj) => {
   const result = [];
   arrayPointsAndSubj.forEach((subject) => {

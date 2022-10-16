@@ -1,6 +1,5 @@
 import VkBotScene from "node-vk-bot-api/lib/scene.js";
 import VkBotMarkup from "node-vk-bot-api/lib/markup.js";
-import { examSubjects } from "../data.js";
 
 export const enterPointsScene = new VkBotScene(
   "enterPoints",
@@ -43,16 +42,8 @@ export const enterPointsScene = new VkBotScene(
     });
 
     if (ctx.session.subjectsArr.length === 3) {
-      ctx.scene.leave();
-
-      await ctx.reply(
-        "Давай посмотри куда ты сможешь поступить!",
-        null,
-        VkBotMarkup.keyboard([
-          VkBotMarkup.button("Вперед!", "primary"),
-          VkBotMarkup.button("В начало", "negative"),
-        ]).oneTime(true)
-      );
+      await ctx.reply("Давай посмотрим куда ты сможешь поступить!");
+      await ctx.scene.enter("checkFieldStudy");
     } else {
       ctx.scene.next();
       await ctx.reply(`И наконец ${ctx.session.subjectsArr[3]}:`);
@@ -64,22 +55,8 @@ export const enterPointsScene = new VkBotScene(
       points: ctx.message.text,
     });
 
-    ctx.scene.next();
+    await ctx.reply("Давай посмотрим куда ты сможешь поступить!");
 
-    await ctx.reply(
-      "Давай посмотри куда ты сможешь поступить!",
-      null,
-      VkBotMarkup.keyboard([
-        VkBotMarkup.button("Вперед!", "primary"),
-        VkBotMarkup.button("В начало", "negative"),
-      ]).oneTime(true)
-    );
-  },
-  async (ctx) => {
-    if (ctx.message.text === "Вперед!") {
-      ctx.scene.enter("checkFieldStudy");
-    } else if (ctx.message.text === "В начало") {
-      ctx.scene.enter("greet");
-    }
+    await ctx.scene.enter("checkFieldStudy");
   }
 );

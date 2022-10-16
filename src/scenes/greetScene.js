@@ -7,7 +7,7 @@ export const greetScene = new VkBotScene(
   async (ctx) => {
     ctx.scene.next();
     await ctx.reply(
-      "Приветсвую тебя, уважаемый абитуриент! Хочешь узнать, проходишь ты на контрактное(платное) обучение?",
+      "Приветствую тебя, уважаемый абитуриент! Хочешь узнать, проходишь ты на контрактное (платное) обучение?",
       null,
       VkBotMarkup.keyboard(
         examSubjects.map((subject) => subject.subject),
@@ -15,7 +15,11 @@ export const greetScene = new VkBotScene(
       ).inline()
     );
     await ctx.reply(
-      "Выбери предметы ЕГЭ или вступительные экзамены, которые ты сдавал"
+      "Выбери предметы ЕГЭ или вступительные экзамены, которые ты сдавал",
+      null,
+      VkBotMarkup.keyboard([
+        VkBotMarkup.button("В начало", "negative"),
+      ]).oneTime(true)
     );
   },
   async (ctx) => {
@@ -36,7 +40,7 @@ export const greetScene = new VkBotScene(
       null,
       VkBotMarkup.keyboard([
         VkBotMarkup.button("Продолжить", "primary"),
-      ]).oneTime(true)
+      ]).inline(true)
     );
     ctx.scene.next();
   },

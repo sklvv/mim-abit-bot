@@ -92,7 +92,8 @@ export const checkFieldStudyScene = new VkBotScene(
           `${getStudyDescription(
             currentStudyName,
             currentStudyProfiles,
-            currentStudyCost
+            currentStudyCost,
+            ctx.session.finalSubjects
           )}`
         );
 

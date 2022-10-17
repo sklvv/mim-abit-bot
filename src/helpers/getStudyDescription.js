@@ -1,7 +1,10 @@
+import { getStudyCost } from "./getStudyCost.js";
+
 export const getStudyDescription = (
   currentStudyName,
   currentStudyProfiles,
-  currentStudyCost
+  currentStudyCost,
+  abitSubjetcsArr
 ) => {
   let str = ``;
   str += `🔹Направление "${currentStudyName}"
@@ -11,7 +14,9 @@ export const getStudyDescription = (
     `;
   });
   str += `
-  Для вас стоимость обучения на 2023-2024 год составит ${currentStudyCost} рублей.`;
+  Для вас стоимость обучения на 2023-2024 год составит ${getStudyCost(
+    currentStudyName,
+    abitSubjetcsArr
+  )} рублей.`;
   return str;
-  // get study cost TODO
 };

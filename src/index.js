@@ -8,6 +8,7 @@ import { checkFieldStudyScene } from "./scenes/checkFieldStudyScene.js";
 import { enterPointsScene } from "./scenes/enterPointsScene.js";
 import { greetScene } from "./scenes/greetScene.js";
 import { getContractScene } from "./scenes/getContractScene.js";
+import { getStudyCost } from "./helpers/getStudyCost.js";
 
 dotenv.config();
 
@@ -31,6 +32,23 @@ bot.command(["Начать", "В начало"], async (ctx) => {
 bot.startPolling((err) => {
   if (err) {
     console.error(err);
+  }
+});
+
+bot.on(async (ctx) => {
+  if (ctx.message.text === "Отправить заявление") {
+    await bot.sendMessage(
+      "390599051",
+      `Новый абитуриент!
+    ФИО: ${ctx.session.studentFIO}
+    ФИО плательщика: ${ctx.session.paymentFIO}
+    Направление: ${ctx.session.areaOfStudy}
+    Стоимость обучения: ${getStudyCost(
+      ctx.session.areaOfStudy,
+      ctx.session.finalSubjects
+    )}
+    `
+    );
   }
 });
 

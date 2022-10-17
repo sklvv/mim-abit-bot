@@ -5,7 +5,8 @@
   "description": "Bot for the PSTU admissions committee",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev":"nodemon index.js"
   },
   "keywords": [],
   "author": "",
